@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import GlobalStyle from './global-style';
 
+import MainPage from './components/pages/main-page/main-page';
+
 function App() {
   return (
-    <div className="App">
+    <Fragment>
       <GlobalStyle />
-      first page
-    </div>
+      <MainPage />
+    </Fragment>
   );
 }
 
