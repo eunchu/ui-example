@@ -12,6 +12,24 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 500;
     color: #242323;
   }
+
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(163, 173, 193, .7);
+    opacity: 0.7;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(163, 173, 193, 1);
+  }
 `;
 
 export default GlobalStyle;
