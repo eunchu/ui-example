@@ -7,13 +7,8 @@
 > git checkout [commit명]
 ```
 
-1. master
-- 프로젝트 기본 세팅
-2. 1.libraryList  
-- Library 목록 출력
-3. 2.libraryDetail
-- Button 클릭으로 Library 상세정보 출력
-4. 3.dropdown
-- Dropdown 을 이용한 Data 출력
-5. 4.table
-- Table 형태의 Data 출력
+1. master: 프로젝트 기본 세팅
+2. 1.libraryList: Library 목록 출력
+3. 2.libraryDetail: Button 클릭으로 Library 상세정보 출력
+4. 3.dropdown: Dropdown 을 이용한 Data 출력
+5. 4.table: Table 형태의 Data 출력
