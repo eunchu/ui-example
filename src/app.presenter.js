@@ -1,9 +1,12 @@
 import React from 'react';
 
+import GlobalStyle from './global-style';
+
 function App() {
   return (
     <div className="App">
-    first page
+      <GlobalStyle />
+      first page
     </div>
   );
 }
