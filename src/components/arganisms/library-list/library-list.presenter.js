@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Container = styled.div`
   width: 14rem;
@@ -7,7 +7,7 @@ const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-  
+
   border: 1px solid gray;
 
   margin: 3rem 0 0 3rem;
@@ -35,16 +35,23 @@ const Item = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  margin-bottom: 0.4rem;
+
+  cursor: pointer;
 `;
 
-const LibraryList = () => {
+const LibraryList = ({ libraries }) => {
   return (
     <Container>
       <Title>Library List</Title>
       <ListArea>
-        <Item>
-          1. test library name
-        </Item>
+        {libraries.length &&
+          libraries.map((library) => (
+            <Item key={library.id} title={library.name}>
+              {library.name}
+            </Item>
+          ))}
       </ListArea>
     </Container>
   );
