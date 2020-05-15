@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { from } from "rxjs";
 import { map, switchMap, toArray } from "rxjs/operators";
 
@@ -14,7 +14,6 @@ let LibraryList = () => {
     const subscription = library
       .listLibraries$(6, false)
       .pipe(
-        // 필요한 정보만을 mapping합니다.
         switchMap(from),
         map((response) => ({
           id: response.id,
@@ -22,15 +21,18 @@ let LibraryList = () => {
         })),
         toArray()
       )
-      .subscribe(
-        // mapping한 library목록을 상태로 저장합니다.
-        changeLibraries,
-        (error) => console.log(error.message)
-      );
+      .subscribe(changeLibraries, (error) => console.log(error.message));
     return () => subscription.unsubscribe();
   }, []);
 
-  return <LibraryListPresenter libraries={libraries} />;
+  const onClickLibrary = useCallback((event, { id }) => {}, []);
+
+  return (
+    <LibraryListPresenter
+      libraries={libraries}
+      onClickLibrary={onClickLibrary}
+    />
+  );
 };
 
 LibraryList = withErrorBoundary(LibraryList);

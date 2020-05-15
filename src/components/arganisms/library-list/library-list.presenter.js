@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -41,20 +42,32 @@ const Item = styled.div`
   cursor: pointer;
 `;
 
-const LibraryList = ({ libraries }) => {
+const LibraryList = ({ libraries, onClickLibrary }) => {
   return (
     <Container>
       <Title>Library List</Title>
       <ListArea>
         {libraries.length &&
           libraries.map((library) => (
-            <Item key={library.id} title={library.name}>
+            <Item
+              key={library.id}
+              title={library.name}
+              onClick={(event) => onClickLibrary(event, { id: library.id })}
+            >
               {library.name}
             </Item>
           ))}
       </ListArea>
     </Container>
   );
+};
+
+LibraryList.defaultProps = {
+  onClickLibrary: (event, { id }) => {},
+};
+
+LibraryList.propTypes = {
+  onClickLibrary: PropTypes.func,
 };
 
 export default LibraryList;
