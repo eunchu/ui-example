@@ -3,6 +3,13 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  padding: 3rem;
+`;
+
+const RightArea = styled.div`
   width: 14rem;
   height: 50rem;
 
@@ -11,7 +18,6 @@ const Container = styled.div`
 
   border: 1px solid gray;
 
-  margin: 3rem 0 0 3rem;
   padding: 0.8rem;
 `;
 
@@ -30,6 +36,8 @@ const ListArea = styled.div`
   margin-top: 1rem;
 `;
 
+const LeftArea = styled.div``;
+
 const Item = styled.div`
   width: 98%;
 
@@ -42,22 +50,35 @@ const Item = styled.div`
   cursor: pointer;
 `;
 
-const LibraryList = ({ libraries, onClickLibrary }) => {
+const LibraryList = ({ libraries, currentLibrary, onClickLibrary }) => {
   return (
     <Container>
-      <Title>Library List</Title>
-      <ListArea>
-        {libraries.length &&
-          libraries.map((library) => (
-            <Item
-              key={library.id}
-              title={library.name}
-              onClick={(event) => onClickLibrary(event, { id: library.id })}
-            >
-              {library.name}
-            </Item>
-          ))}
-      </ListArea>
+      <RightArea>
+        <Title>Library List</Title>
+        <ListArea>
+          {libraries.length &&
+            libraries.map((library) => (
+              <Item
+                key={library.id}
+                title={library.name}
+                onClick={(event) => onClickLibrary(event, { id: library.id })}
+              >
+                {library.name}
+              </Item>
+            ))}
+        </ListArea>
+      </RightArea>
+
+      <LeftArea>
+        {currentLibrary ? (
+          <>
+            <div>id: {currentLibrary.id}</div>
+            <div>user: {currentLibrary.createUser}</div>
+            <div>create date: {currentLibrary.createDate}</div>
+            <div>desc: {currentLibrary.desc ? currentLibrary.desc : "-"}</div>
+          </>
+        ) : null}
+      </LeftArea>
     </Container>
   );
 };
