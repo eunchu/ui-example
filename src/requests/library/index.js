@@ -1,4 +1,5 @@
 import { listLibraries$ as _listLibraries$ } from "./list-libraries";
+import { readLibrary$ as _readLibrary$ } from "./read-library";
 
 export const factory = ({ baseUrl, log, processResponse$ }) => {
   const dependencies = {
@@ -8,8 +9,10 @@ export const factory = ({ baseUrl, log, processResponse$ }) => {
   };
 
   const listLibraries$ = _listLibraries$(dependencies);
+  const readLibrary$ = _readLibrary$(dependencies);
 
   return {
     listLibraries$,
+    readLibrary$,
   };
 };
